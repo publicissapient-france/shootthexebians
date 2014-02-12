@@ -23,4 +23,12 @@ public class Score {
         this.fondation = fondation;
         this.score = score;
     }
+
+    public String getPlayer() {
+        return player;
+    }
+
+    public Long getScore() {
+        return score;
+    }
 }
