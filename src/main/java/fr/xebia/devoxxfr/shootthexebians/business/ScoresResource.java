@@ -1,6 +1,7 @@
 package fr.xebia.devoxxfr.shootthexebians.business;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static javax.ws.rs.core.Response.Status.CREATED;
 import static javax.ws.rs.core.Response.ok;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -23,6 +24,6 @@ public class ScoresResource {
     @POST
     public Response createScore(Score score) {
         scoreCollection.save(score);
-        return ok().build(); // TODO : retourner une 201
+        return ok().status(CREATED).build();
     }
 }
