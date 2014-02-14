@@ -2,6 +2,8 @@ package fr.xebia.devoxxfr.shootthexebians.business;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.ok;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -21,7 +23,7 @@ public class ScoresResource {
     private MongoCollection scoreCollection;
 
     @POST
-    public Response createScore(Score score) {
+    public Response createScore(@NotNull @Valid Score score) {
         scoreCollection.update("{player: '" + score.getPlayer() + "'}").upsert().with(score);
         return ok().entity(score).build();
     }

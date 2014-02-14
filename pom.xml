@@ -47,6 +47,11 @@
             <version>${servlet.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-bean-validation</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
 
         <!-- Dependency injection -->
         <dependency>
