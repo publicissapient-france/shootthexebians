@@ -13,7 +13,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 public class RankingResourceTest {
 
     @Rule
-    public FongoJongo fongoJongo = FongoJongo.getInstance();
+    public FongoJongo fongoJongo = new FongoJongo();
 
     private RankingResource resource = new RankingResource();
 

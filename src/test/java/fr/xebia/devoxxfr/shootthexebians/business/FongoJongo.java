@@ -8,17 +8,9 @@ import org.junit.rules.ExternalResource;
 public class FongoJongo extends ExternalResource {
 
     private final Jongo jongo;
-    private static FongoJongo instance;
 
-    private FongoJongo() {
+    public FongoJongo() {
         jongo = new Jongo(new Fongo("Test").getDB("Database"));
-    }
-
-    public static FongoJongo getInstance() {
-        if (instance == null) {
-            instance = new FongoJongo();
-        }
-        return instance;
     }
 
     @Override

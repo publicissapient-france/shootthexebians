@@ -10,7 +10,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 public class ScoresResourceTest {
 
     @Rule
-    public FongoJongo fongoJongo = FongoJongo.getInstance();
+    public FongoJongo fongoJongo = new FongoJongo();
 
     private ScoresResource resource = new ScoresResource();
     
