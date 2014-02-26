@@ -1,4 +1,4 @@
-package fr.xebia.devoxxfr.shootthexebians.business;
+package fr.xebia.devoxxfr.shootthexebians.business.scores;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.ok;
@@ -20,11 +20,11 @@ import org.springframework.stereotype.Component;
 public class ScoresResource {
 
     @Autowired
-    private MongoCollection scoreCollection;
+    private MongoCollection scoresCollection;
 
     @POST
     public Response createScore(@NotNull @Valid Score score) {
-        scoreCollection.update("{player: '" + score.getPlayer() + "'}").upsert().with(score);
+        scoresCollection.update("{player: '" + score.getPlayer() + "'}").upsert().with(score);
         return ok().entity(score).build();
     }
 }

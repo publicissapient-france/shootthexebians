@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 public class SpringConfig {
 
     @Bean(name = "scoresCollection")
-    public MongoCollection getUsersCollection() {
+    public MongoCollection getScoresCollection() {
         DB db;
         MongoClientURI mongohq_url = new MongoClientURI(System.getProperty("MONGOHQ_URL"));
         try {

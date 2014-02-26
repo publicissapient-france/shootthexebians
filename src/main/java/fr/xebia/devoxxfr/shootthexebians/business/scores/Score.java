@@ -1,4 +1,4 @@
-package fr.xebia.devoxxfr.shootthexebians.business;
+package fr.xebia.devoxxfr.shootthexebians.business.scores;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,5 +31,20 @@ public class Score {
 
     protected String getPlayer() {
         return player;
+    }
+
+    // Added for tests
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Score score1 = (Score) o;
+
+        if (fondation != null ? !fondation.equals(score1.fondation) : score1.fondation != null) return false;
+        if (player != null ? !player.equals(score1.player) : score1.player != null) return false;
+        if (score != null ? !score.equals(score1.score) : score1.score != null) return false;
+
+        return true;
     }
 }

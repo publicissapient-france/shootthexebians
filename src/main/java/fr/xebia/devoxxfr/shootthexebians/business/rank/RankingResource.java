@@ -1,4 +1,4 @@
-package fr.xebia.devoxxfr.shootthexebians.business;
+package fr.xebia.devoxxfr.shootthexebians.business.rank;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import java.util.ArrayList;
@@ -18,11 +18,11 @@ import org.springframework.stereotype.Component;
 public class RankingResource {
 
     @Autowired
-    private MongoCollection scoreCollection;
+    private MongoCollection scoresCollection;
 
     @GET
     public List<Rank> buildRanking() {
-        Iterable<Rank> sortedRanks = scoreCollection.find().sort("{score: -1}").as(Rank.class);
+        Iterable<Rank> sortedRanks = scoresCollection.find().sort("{score: -1}").as(Rank.class);
         List<Rank> ranking = new ArrayList<>();
         Long index = 1L;
         for (Rank rank : sortedRanks) {
