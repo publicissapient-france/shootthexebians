@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 @JsonAutoDetect(
-        fieldVisibility = JsonAutoDetect.Visibility.ANY
+        fieldVisibility = JsonAutoDetect.Visibility.ANY // mandatory for serialization
 )
 public class Score {
 
@@ -29,7 +29,7 @@ public class Score {
         this.score = score;
     }
 
-    public String getPlayer() {
+    protected String getPlayer() {
         return player;
     }
 }
