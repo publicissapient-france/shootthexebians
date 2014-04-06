@@ -1,11 +1,12 @@
 package fr.xebia.devoxxfr.shootthexebians.business.scores;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import fr.xebia.devoxxfr.shootthexebians.business.FongoJongo;
+import org.jongo.MongoCollection;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
+import fr.xebia.devoxxfr.shootthexebians.business.FongoJongo;
 
 public class ScoresResourceTest {
 
@@ -13,10 +14,12 @@ public class ScoresResourceTest {
     public FongoJongo fongoJongo = new FongoJongo();
 
     private ScoresResource resource = new ScoresResource();
-    
+    private MongoCollection scoresCollection;
+
     @Before
     public void initCollection() {
-        ReflectionTestUtils.setField(resource, "scoresCollection", fongoJongo.getCollection("scores"));
+        scoresCollection = fongoJongo.getCollection("scoresCollection");
+        ReflectionTestUtils.setField(resource, "scoresCollection", scoresCollection);
     }
 
     @Test
@@ -30,7 +33,7 @@ public class ScoresResourceTest {
         resource.createScore(score2);
 
         // then
-        assertThat(fongoJongo.getCollection("scores").count()).isEqualTo(2);
+        assertThat(scoresCollection.count()).isEqualTo(2);
     }
 
     @Test
@@ -44,10 +47,8 @@ public class ScoresResourceTest {
         resource.createScore(score2).getEntity();
 
         // then
-        assertThat(fongoJongo.getCollection("scores").count()).isEqualTo(1);
-        Score score = fongoJongo.getCollection("scores").findOne().as(Score.class);
+        assertThat(scoresCollection.count()).isEqualTo(1);
+        Score score = scoresCollection.findOne().as(Score.class);
         assertThat(score).isEqualTo(score2);
     }
-
-
 }
