@@ -11,14 +11,17 @@ public class Rank {
 
     private Long rank;
     private String player;
+    private String fondation;
     private Long score;
 
     @JsonCreator
     public Rank(@JsonProperty("rank") Long rank,
                 @JsonProperty("player") String player,
+                @JsonProperty("fondation") String fondation,
                 @JsonProperty("score") Long score) {
         this.rank = rank;
         this.player = player;
+        this.fondation = fondation;
         this.score = score;
     }
 
@@ -36,6 +39,7 @@ public class Rank {
 
         if (player != null ? !player.equals(rank1.player) : rank1.player != null) return false;
         if (rank != null ? !rank.equals(rank1.rank) : rank1.rank != null) return false;
+        if (fondation != null ? !fondation.equals(rank1.fondation) : rank1.fondation != null) return false;
         if (score != null ? !score.equals(rank1.score) : rank1.score != null) return false;
 
         return true;

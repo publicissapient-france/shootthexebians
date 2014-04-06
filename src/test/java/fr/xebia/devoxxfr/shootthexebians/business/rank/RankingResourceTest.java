@@ -2,13 +2,13 @@ package fr.xebia.devoxxfr.shootthexebians.business.rank;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
-import fr.xebia.devoxxfr.shootthexebians.business.FongoJongo;
-import fr.xebia.devoxxfr.shootthexebians.business.scores.Score;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
+import fr.xebia.devoxxfr.shootthexebians.business.FongoJongo;
+import fr.xebia.devoxxfr.shootthexebians.business.scores.Score;
 
 public class RankingResourceTest {
 
@@ -35,9 +35,9 @@ public class RankingResourceTest {
 
         // then
         List<Rank> expectedRanking = newArrayList(
-                new Rank(1L, "player2@xebia.fr", 60L),
-                new Rank(2L, "player3@xebia.fr", 30L),
-                new Rank(3L, "player1@xebia.fr", 20L)
+                new Rank(1L, "player2@xebia.fr", "agile", 60L),
+                new Rank(2L, "player3@xebia.fr", "back", 30L),
+                new Rank(3L, "player1@xebia.fr", "craft", 20L)
         );
         assertThat(ranking).isEqualTo(expectedRanking);
     }
